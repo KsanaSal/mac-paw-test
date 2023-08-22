@@ -18,6 +18,7 @@ const config: Config = {
                 accentSecondary: "#FFD280",
                 accentThird: "#97EAB9",
             },
+            fontFamily: { serif: ["Jost", "serif"] },
         },
     },
     plugins: [],
