@@ -15,6 +15,12 @@ const config: Config = {
                 primaryLight: "#FBE0DC",
                 primaryDark: "#FF868E",
                 accentPrimary: "#B4B7FF",
+                transparent: {
+                    accentPrimary30: "#B4B7FF4D",
+                    accentSecondary30: "#FFD2804D",
+                    accentThird30: "#97EAB94D",
+                    white60: "#FFFFFF99",
+                },
                 accentSecondary: "#FFD280",
                 accentThird: "#97EAB9",
             },
