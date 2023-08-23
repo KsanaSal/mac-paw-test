@@ -3,9 +3,13 @@ import BtnRout from "./buttons/BtnRout";
 const RoutButton = ({
     img,
     bgColor,
+    link,
+    text,
 }: {
     img: JSX.Element;
     bgColor: string;
+    link: string;
+    text: string;
 }) => {
     return (
         <div className="flex flex-col items-center justify-center gap-[10px] group cursor-pointer">
@@ -14,7 +18,11 @@ const RoutButton = ({
             >
                 {img}
             </div>
-            <BtnRout extraStyles="group-hover:bg-primaryLight group-active:bg-primaryDark group-active:text-white" />
+            <BtnRout
+                extraStyles="group-hover:bg-primaryLight group-active:bg-primaryDark group-active:text-white"
+                link={link}
+                text={text}
+            />
         </div>
     );
 };

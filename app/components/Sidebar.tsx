@@ -65,14 +65,20 @@ const Sidebar = () => {
                 <RoutButton
                     img={<Image src={VoteTable} alt="Vote table" />}
                     bgColor="bg-accentPrimary"
+                    link={"/voting"}
+                    text={"Voting"}
                 />
                 <RoutButton
-                    img={<Image src={PetBreeds} alt="Vote table" />}
+                    img={<Image src={PetBreeds} alt="Pet breeds" />}
                     bgColor="bg-accentThird"
+                    link={"/breeds"}
+                    text={"Breeds"}
                 />
                 <RoutButton
-                    img={<Image src={ImagesSearch} alt="Vote table" />}
+                    img={<Image src={ImagesSearch} alt="Images search" />}
                     bgColor="bg-accentSecondary"
+                    link={"/gallery"}
+                    text={"Gallery"}
                 />
             </div>
         </div>
