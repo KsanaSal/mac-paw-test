@@ -1,8 +1,8 @@
-const BtnRout = () => {
+const BtnRout = ({ extraStyles }: { extraStyles?: string }) => {
     return (
         <button
             type="button"
-            className="bg-white w-[138px] py-[10px] rounded-[10px] text-primaryDark uppercase font-medium"
+            className={`${extraStyles} bg-white w-[138px] py-[10px] rounded-[10px] text-primaryDark uppercase font-medium `}
         >
             VOTING
         </button>
