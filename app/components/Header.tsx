@@ -13,7 +13,7 @@ const Header = () => {
                 <input
                     type="text"
                     placeholder="Search for breeds by name"
-                    className="w-[470px] py-[15px] pl-[20px] text-[20px] rounded-[20px]"
+                    className="w-[470px] py-[15px] pl-[20px] text-[20px] rounded-[20px] border outline-none hover:outline-none hover:border-primaryLight active:outline-none active:border-primaryDark"
                 />
                 <button
                     type="button"

@@ -12,7 +12,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div className="flex flex-col mt-[30px] mr-[30px] gap-[10px]">
+        <div className="flex flex-col my-[30px] mr-[30px] gap-[10px]">
             <Header />
             {children}
         </div>

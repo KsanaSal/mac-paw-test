@@ -16,7 +16,7 @@ const Voting = () => {
     const isActive = router === link;
 
     return (
-        <div className="flex flex-col w-full bg-white p-[20px] rounded-[20px] gap-[20px]">
+        <div className="flex flex-col w-full h-[770px] bg-white p-[20px] rounded-[20px] gap-[20px]">
             <div className="flex gap-[10px]">
                 <BtnBack />
                 <BtnRout
