@@ -5,7 +5,6 @@ import Image from "next/image";
 import SmileIcon from "../../assets/icons/feelIcons/SmileIcon";
 import SadSmileIcon from "../../assets/icons/feelIcons/SadSmileIcon";
 import HeartIcon from "../../assets/icons/feelIcons/HeartIcon";
-// import LeftChevronIcon from "../../assets/icons/actionIcon/LeftChevronIcon";
 import BtnRout from "../../components/buttons/BtnRout";
 import VoteTable from "../../assets/images/imagesRoutBtn/vote-table.png";
 import HeartSolidIcon from "../../assets/icons/feelIcons/HeartSolidIcon";
