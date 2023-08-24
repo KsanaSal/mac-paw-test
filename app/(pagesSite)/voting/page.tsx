@@ -2,14 +2,14 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import SearchIcon from "../../assets/icons/actionIcon/SearchIcon";
 import SmileIcon from "../../assets/icons/feelIcons/SmileIcon";
 import SadSmileIcon from "../../assets/icons/feelIcons/SadSmileIcon";
 import HeartIcon from "../../assets/icons/feelIcons/HeartIcon";
-import LeftChevronIcon from "../../assets/icons/actionIcon/LeftChevronIcon";
+// import LeftChevronIcon from "../../assets/icons/actionIcon/LeftChevronIcon";
 import BtnRout from "../../components/buttons/BtnRout";
 import VoteTable from "../../assets/images/imagesRoutBtn/vote-table.png";
 import HeartSolidIcon from "../../assets/icons/feelIcons/HeartSolidIcon";
+import BtnBack from "../../components/buttons/BtnBack";
 
 const Voting = () => {
     const router = usePathname();
@@ -19,11 +19,7 @@ const Voting = () => {
     return (
         <div className="flex flex-col w-full bg-white p-[20px] rounded-[20px] gap-[20px]">
             <div className="flex gap-[10px]">
-                <button type="button">
-                    <div className="w-10 h-10 rounded-[10px] flex justify-center items-center text-primaryDark  bg-primaryLight hover:bg-primaryDark hover:text-white ">
-                        <LeftChevronIcon className="w-[20px] h-[20px]" />
-                    </div>
-                </button>
+                <BtnBack />
                 <BtnRout
                     extraStyles={`${
                         isActive
