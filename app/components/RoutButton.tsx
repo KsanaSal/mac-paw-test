@@ -1,3 +1,4 @@
+import { usePathname } from "next/navigation";
 import BtnRout from "./buttons/BtnRout";
 
 const RoutButton = ({
@@ -11,15 +12,24 @@ const RoutButton = ({
     link: string;
     text: string;
 }) => {
+    const router = usePathname();
+    const isActive = router.includes(link);
+
     return (
         <div className="flex flex-col items-center justify-center gap-[10px] group cursor-pointer">
             <div
-                className={`${bgColor} flex items-center justify-center border-[4px] border-transparent-white60 rounded-[20px] w-[138px] h-[198px] group-hover:border-white group-active:border-primaryLight`}
+                className={`${bgColor} flex items-center justify-center border-[4px] border-transparent-white60 rounded-[20px] w-[138px] h-[198px] group-hover:border-white group-active:border-primaryLight ${
+                    isActive && "border-primaryLight"
+                }`}
             >
                 {img}
             </div>
             <BtnRout
-                extraStyles="group-hover:bg-primaryLight group-active:bg-primaryDark group-active:text-white"
+                extraStyles={`${
+                    isActive
+                        ? "bg-primaryDark text-white"
+                        : "bg-white text-primaryDark"
+                } group-hover:bg-primaryLight group-active:bg-primaryDark group-active:text-white`}
                 link={link}
                 text={text}
             />
