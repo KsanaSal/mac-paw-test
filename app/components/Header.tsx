@@ -1,7 +1,10 @@
+"use client";
+import Link from "next/link";
 import SearchIcon from "../assets/icons/actionIcon/SearchIcon";
 import HeartIcon from "../assets/icons/feelIcons/HeartIcon";
 import SadSmileIcon from "../assets/icons/feelIcons/SadSmileIcon";
 import SmileIcon from "../assets/icons/feelIcons/SmileIcon";
+import BtnFeel from "./buttons/BtnFeel";
 
 const Header = () => {
     return (
@@ -21,15 +24,18 @@ const Header = () => {
                     </div>
                 </button>
             </div>
-            <div className="w-[60px] h-[60px]  rounded-[20px] flex justify-center items-center text-primaryDark bg-white hover:bg-primaryLight active:bg-primaryDark active:text-white ">
-                <SmileIcon className="w-[30px] h-[30px]" />
-            </div>
-            <div className="w-[60px] h-[60px]  rounded-[20px] flex justify-center items-center text-primaryDark bg-white hover:bg-primaryLight active:bg-primaryDark active:text-white ">
-                <HeartIcon className="w-[30px] h-[30px]" />
-            </div>
-            <div className="w-[60px] h-[60px]  rounded-[20px] flex justify-center items-center text-primaryDark bg-white hover:bg-primaryLight active:bg-primaryDark active:text-white ">
-                <SadSmileIcon className="w-[30px] h-[30px]" />
-            </div>
+            <BtnFeel
+                link={"/likes"}
+                icon={<SmileIcon className="w-[30px] h-[30px]" />}
+            />
+            <BtnFeel
+                link={"/favourites"}
+                icon={<HeartIcon className="w-[30px] h-[30px]" />}
+            />
+            <BtnFeel
+                link={"/dislikes"}
+                icon={<SadSmileIcon className="w-[30px] h-[30px]" />}
+            />
         </div>
     );
 };
