@@ -4,6 +4,9 @@ import { usePathname } from "next/navigation";
 import BtnRout from "../../components/buttons/BtnRout";
 import BtnBack from "../../components/buttons/BtnBack";
 import Image from "next/image";
+import BtnSort from "../../components/buttons/BtnSort";
+import SortUpIcon from "../../assets/icons/actionIcon/SortUpIcon";
+import SortDownIcon from "../../assets/icons/actionIcon/SortDownIcon";
 
 const Voting = () => {
     const router = usePathname();
@@ -148,6 +151,10 @@ const Voting = () => {
                     <option value="lim15">Limit: 15</option>
                     <option value="lim20">Limit: 20</option>
                 </select>
+                <BtnSort icon={<SortUpIcon className="w-[18px] h-[22px]" />} />
+                <BtnSort
+                    icon={<SortDownIcon className="w-[18px] h-[22px]" />}
+                />
             </div>
             <div className="overflow-y-scroll">
                 <div className="grid grid-cols-3 gap-5 w-[640px]">
