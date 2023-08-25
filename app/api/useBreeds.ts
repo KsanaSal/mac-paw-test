@@ -3,7 +3,11 @@ import useSWRMutation from "swr/mutation";
 import { useEffect, useState } from "react";
 import { API_PATH } from "./apiPath";
 import { useSelector } from "react-redux";
-import { currentBreedIdSelector } from "../redux/breeds/selectorBreeds";
+import {
+    currentBreedIdSelector,
+    limitImagesSelector,
+    sortOrderSelector,
+} from "../redux/searchImages/selectorSearchImages";
 const apiUrl = process.env.NEXT_PUBLIC_API_URL as string;
 const apiKey = process.env.NEXT_PUBLIC_API_KEY as string;
 const myHeaders = new Headers();
@@ -37,8 +41,11 @@ interface IGetImagesResponse {
 
 export const useGetImages = (): IGetImagesResponse => {
     const currentBreedId = useSelector(currentBreedIdSelector);
+    const limitImages = useSelector(limitImagesSelector);
+    const sortOrder = useSelector(sortOrderSelector);
+
     const { data, error, isLoading }: IFetchResponse<IImage[]> = useSWR(
-        `${apiUrl}${API_PATH.SEARCH}?format=json&limit=20&has_breeds=1&breed_ids=${currentBreedId}`,
+        `${apiUrl}${API_PATH.SEARCH}?format=json&limit=${limitImages}&has_breeds=1&breed_ids=${currentBreedId}&order=${sortOrder}`,
         fetcher
     );
     console.log(data);

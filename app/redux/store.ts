@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import breedsReducer from "./breeds/sliceBreeds";
+import imagesReducer from "./searchImages/sliceSearchImages";
 
 const rootReducer = combineReducers({
-    breeds: breedsReducer,
+    images: imagesReducer,
 });
 
 const store = configureStore({

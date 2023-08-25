@@ -1,16 +1,15 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { IImage, useGetImages } from "../api/useBreeds";
-import { currentBreedIdSelector } from "../redux/breeds/selectorBreeds";
-import { useSelector } from "react-redux";
+// import { currentBreedIdSelector } from "../redux/searchImages/selectorSearchImages";
+// import { useSelector } from "react-redux";
 
 const ImageList = () => {
     const [images, setImages] = useState<IImage[]>([]);
     const [chunkedImages, setChunkedImages] = useState<IImage[][]>([]);
     const { data } = useGetImages();
-    const currentBreedId = useSelector(currentBreedIdSelector);
-    console.log(currentBreedId);
-    console.log(images);
+    // const currentBreedId = useSelector(currentBreedIdSelector);
+
     useEffect(() => {
         if (data) {
             setImages(data);
@@ -37,7 +36,7 @@ const ImageList = () => {
                     <div
                         data-index={index}
                         key={index}
-                        className={`bg-slate-400 rounded-[20px] overflow-hidden ${
+                        className={`bg-slate-400 rounded-[20px] overflow-hidden relative ${
                             index % 10 === 0
                                 ? "col-span-1 row-span-2"
                                 : index % 9 === 0
@@ -68,6 +67,15 @@ const ImageList = () => {
                             alt={image.id}
                             className="w-full h-full object-cover"
                         />
+                        <div className="absolute transition ease-in-out duration-300 top-0 left-0 w-full h-full bg-transparent-primaryLight60 opacity-0 hover:opacity-100">
+                            <div className="absolute bottom-[10px] left-1/2 -translate-x-1/2  bg-white py-[5px] px-[42px] rounded-[10px]">
+                                {image.breeds && image.breeds.length > 0 ? (
+                                    <p>{image.breeds[0].name}</p>
+                                ) : (
+                                    <p>No breed</p>
+                                )}
+                            </div>
+                        </div>
                     </div>
                 ))
             )}

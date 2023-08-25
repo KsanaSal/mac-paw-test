@@ -1,28 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface IBreedInitialState {
-    breeds: string[];
     currentBreedId: string;
+    limitImages: string;
+    sortOrder: string;
 }
 
 const initialState: IBreedInitialState = {
-    breeds: [],
     currentBreedId: "",
+    limitImages: "10",
+    sortOrder: "RANDOM",
 };
 
 const sliceBreeds = createSlice({
     name: "breeds",
     initialState,
     reducers: {
-        setBreeds: (state, action) => {
-            state.breeds = action.payload;
-        },
-
         setCurrentBreedId: (state, action) => {
             state.currentBreedId = action.payload;
+        },
+
+        setLimitImages: (state, action) => {
+            state.limitImages = action.payload;
+        },
+
+        setSortOrder: (state, action) => {
+            state.sortOrder = action.payload;
         },
     },
 });
 
-export const { setBreeds, setCurrentBreedId } = sliceBreeds.actions;
+export const { setLimitImages, setCurrentBreedId, setSortOrder } =
+    sliceBreeds.actions;
 export default sliceBreeds.reducer;
