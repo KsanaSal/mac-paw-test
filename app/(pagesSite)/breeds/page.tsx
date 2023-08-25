@@ -6,12 +6,16 @@ import BtnBack from "../../components/buttons/BtnBack";
 import BtnSort from "../../components/buttons/BtnSort";
 import SortUpIcon from "../../assets/icons/actionIcon/SortUpIcon";
 import SortDownIcon from "../../assets/icons/actionIcon/SortDownIcon";
-import Breeds from "@/app/components/Breeds";
+import ImageList from "../../components/ImageList";
+// import { useGetBreeds } from "@/app/api/useBreeds";
+import BreedList from "../../components/BreedList";
 
 const Voting = () => {
     const router = usePathname();
     const link = "/breeds";
     const isActive = router === link;
+
+    // console.log(breedList);
 
     return (
         <div className="flex flex-col w-full h-[770px] bg-white p-[20px] rounded-[20px] gap-[20px]">
@@ -26,16 +30,7 @@ const Voting = () => {
                     link={link}
                     text={"Breeds"}
                 />
-                <select
-                    name="breeds"
-                    defaultValue={"allBreeds"}
-                    className="bg-grayLight w-[226px] rounded-[10px] py-[8px] pl-[10px] text-[16px] text-grayMedium border outline-none hover:outline-none hover:border-primaryLight active:outline-none active:border-primaryDark"
-                >
-                    <option value="allBreeds">All breeds</option>
-                    <option value="abyssinian">Abyssinian</option>
-                    <option value="aegean">Aegean</option>
-                    <option value="americanBobtail">American Bobtail</option>
-                </select>
+                <BreedList />
                 <select
                     name="limit"
                     defaultValue={"lim10"}
@@ -52,7 +47,7 @@ const Voting = () => {
                 />
             </div>
             <div className="overflow-y-scroll">
-                <Breeds />
+                <ImageList />
             </div>
         </div>
     );

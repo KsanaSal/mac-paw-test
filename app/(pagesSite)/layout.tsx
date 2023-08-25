@@ -1,5 +1,9 @@
+"use client";
 import type { Metadata } from "next";
+import { Provider } from "react-redux";
+import { SWRConfig } from "swr";
 import Header from "../components/Header";
+import store from "../redux/store";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -12,9 +16,15 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div className="flex flex-col my-[30px] mr-[30px] gap-[10px]">
-            <Header />
-            {children}
-        </div>
+        <SWRConfig
+            value={{ revalidateOnFocus: false, revalidateIfStale: false }}
+        >
+            <Provider store={store}>
+                <div className="flex flex-col my-[30px] mr-[30px] gap-[10px]">
+                    <Header />
+                    {children}
+                </div>
+            </Provider>
+        </SWRConfig>
     );
 }
