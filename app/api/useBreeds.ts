@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import {
     currentBreedIdSelector,
     limitImagesSelector,
+    mimeTypeSelector,
     sortOrderSelector,
 } from "../redux/searchImages/selectorSearchImages";
 const apiUrl = process.env.NEXT_PUBLIC_API_URL as string;
@@ -43,9 +44,10 @@ export const useGetImages = (): IGetImagesResponse => {
     const currentBreedId = useSelector(currentBreedIdSelector);
     const limitImages = useSelector(limitImagesSelector);
     const sortOrder = useSelector(sortOrderSelector);
+    const mimeType = useSelector(mimeTypeSelector);
 
     const { data, error, isLoading }: IFetchResponse<IImage[]> = useSWR(
-        `${apiUrl}${API_PATH.SEARCH}?format=json&limit=${limitImages}&has_breeds=1&breed_ids=${currentBreedId}&order=${sortOrder}`,
+        `${apiUrl}${API_PATH.SEARCH}?format=json&limit=${limitImages}&breed_ids=${currentBreedId}&order=${sortOrder}&mime_types=${mimeType}`,
         fetcher
     );
     console.log(data);

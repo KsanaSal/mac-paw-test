@@ -6,3 +6,5 @@ export const limitImagesSelector = (state: { images: IBreedInitialState }) =>
     state.images.limitImages;
 export const sortOrderSelector = (state: { images: IBreedInitialState }) =>
     state.images.sortOrder;
+export const mimeTypeSelector = (state: { images: IBreedInitialState }) =>
+    state.images.mimeType;

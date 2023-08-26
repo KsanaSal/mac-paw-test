@@ -7,8 +7,8 @@ import BtnSort from "../../components/buttons/BtnSort";
 import SortUpIcon from "../../assets/icons/actionIcon/SortUpIcon";
 import SortDownIcon from "../../assets/icons/actionIcon/SortDownIcon";
 import ImageList from "../../components/ImageList";
-import BreedList from "../../components/BreedList";
-import LimitImages from "../../components/LimitImages";
+import BreedList from "../../components/inputsSelect/BreedList";
+import LimitImages from "../../components/inputsSelect/LimitImages";
 
 const Breeds = () => {
     const router = usePathname();

@@ -1,16 +1,16 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { IImage, useGetImages } from "../api/useBreeds";
-import { useRouter } from "next/navigation";
-// import { currentBreedIdSelector } from "../redux/searchImages/selectorSearchImages";
-// import { useSelector } from "react-redux";
+import { usePathname, useRouter } from "next/navigation";
 
 const ImageList = () => {
     const [images, setImages] = useState<IImage[]>([]);
     const [chunkedImages, setChunkedImages] = useState<IImage[][]>([]);
     const { data } = useGetImages();
     const router = useRouter();
-    // const currentBreedId = useSelector(currentBreedIdSelector);
+    // const routerPage = usePathname();
+    // const link = "/gallery";
+    // const isActive = routerPage === link;
 
     useEffect(() => {
         if (data) {
@@ -36,7 +36,10 @@ const ImageList = () => {
             {chunkedImages.map((chunk) =>
                 chunk.map((image, index) => (
                     <div
-                        onClick={() => router.push(`/breeds/${image.id}`)}
+                        onClick={() =>
+                            image.breeds.length > 0 &&
+                            router.push(`/breeds/${image.id}`)
+                        }
                         data-index={index}
                         key={index}
                         className={`bg-slate-400 rounded-[20px] overflow-hidden relative ${
@@ -71,7 +74,7 @@ const ImageList = () => {
                             className="w-full h-full object-cover"
                         />
                         <div className="absolute transition ease-in-out duration-300 top-0 left-0 w-full h-full bg-transparent-primaryLight60 opacity-0 hover:opacity-100">
-                            <div className="absolute bottom-[10px] left-1/2 -translate-x-1/2  bg-white py-[5px] px-[42px] rounded-[10px]">
+                            <div className="absolute bottom-[10px] left-1/2 -translate-x-1/2  bg-white py-[5px] px-[42px] rounded-[10px] text-center">
                                 {image.breeds && image.breeds.length > 0 ? (
                                     <p>{image.breeds[0].name}</p>
                                 ) : (

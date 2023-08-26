@@ -4,12 +4,14 @@ export interface IBreedInitialState {
     currentBreedId: string;
     limitImages: string;
     sortOrder: string;
+    mimeType: string;
 }
 
 const initialState: IBreedInitialState = {
     currentBreedId: "",
     limitImages: "10",
     sortOrder: "RANDOM",
+    mimeType: "jpg,png",
 };
 
 const sliceBreeds = createSlice({
@@ -27,9 +29,13 @@ const sliceBreeds = createSlice({
         setSortOrder: (state, action) => {
             state.sortOrder = action.payload;
         },
+
+        setMimeTypes: (state, action) => {
+            state.mimeType = action.payload;
+        },
     },
 });
 
-export const { setLimitImages, setCurrentBreedId, setSortOrder } =
+export const { setLimitImages, setCurrentBreedId, setSortOrder, setMimeTypes } =
     sliceBreeds.actions;
 export default sliceBreeds.reducer;

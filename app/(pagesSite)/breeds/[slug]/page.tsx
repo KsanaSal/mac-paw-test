@@ -39,25 +39,33 @@ const Breed = ({ params }: { params: { slug: string } }) => {
                         <BtnRout
                             extraStyles={` bg-primaryDark text-white group-hover:bg-primaryLight group-active:bg-primaryDark group-active:text-white`}
                             link={params.slug}
-                            text={breedData.breeds[0].id}
+                            text={
+                                breedData.breeds && breedData.breeds.length > 0
+                                    ? breedData.breeds[0].id
+                                    : ""
+                            }
                         />
                     </div>
-                    <div className="h-[360px] rounded-[20px] overflow-hidden">
+                    <div className="h-[360px] rounded-[20px] overflow-hidden flex justify-center">
                         <Image
                             width={breedData.width}
                             height={breedData.height}
                             src={breedData.url}
                             objectFit="contain"
                             alt={breedData.id}
-                            className="h-full object-contain rounded-[20px] overflow-hidden"
+                            className="h-full w-[unset] object-contain rounded-[20px] overflow-hidden"
                         />
                     </div>
                     <div className="flex flex-col items-center gap-[20px] border-2 border-primaryLight rounded-[20px] relative min-h-[204px] mt-[30px] px-[20px] pb-[20px] w-[640px]">
                         <h1 className="text-[36px] font-medium text-grayDark absolute top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-white py-[5px] px-[40px] rounded-[20px]">
-                            {breedData.breeds[0].name}
+                            {breedData.breeds && breedData.breeds.length > 0
+                                ? breedData.breeds[0].name
+                                : "No breed"}
                         </h1>
                         <p className="text-[20px] font-medium text-grayMedium mt-[30px] line-clamp-3">
-                            {breedData.breeds[0].description}
+                            {breedData.breeds && breedData.breeds.length > 0
+                                ? breedData.breeds[0].description
+                                : "No description"}
                         </p>
                         <div className="flex gap-[20px]">
                             <div className="w-[270px] flex flex-col gap-[4px]">
@@ -65,7 +73,10 @@ const Breed = ({ params }: { params: { slug: string } }) => {
                                     Temperament:
                                 </span>
                                 <p className="text-[16px] text-grayMedium">
-                                    {breedData.breeds[0].temperament}
+                                    {breedData.breeds &&
+                                    breedData.breeds.length > 0
+                                        ? breedData.breeds[0].temperament
+                                        : "No temperament"}
                                 </p>
                             </div>
                             <div className="flex flex-col gap-[10px]">
@@ -73,19 +84,30 @@ const Breed = ({ params }: { params: { slug: string } }) => {
                                     <span className="font-medium text-[16px] text-grayDark">
                                         Origin:
                                     </span>{" "}
-                                    {breedData.breeds[0].origin}
+                                    {breedData.breeds &&
+                                    breedData.breeds.length > 0
+                                        ? breedData.breeds[0].origin
+                                        : "No origin"}
                                 </p>
                                 <p className="text-[16px] text-grayMedium">
                                     <span className="font-medium text-[16px] text-grayDark">
                                         Weight:
                                     </span>{" "}
-                                    {breedData.breeds[0].weight.metric} kgs
+                                    {breedData.breeds &&
+                                    breedData.breeds.length > 0
+                                        ? breedData.breeds[0].weight.metric
+                                        : "No weight"}{" "}
+                                    kgs
                                 </p>
                                 <p className="text-[16px] text-grayMedium">
                                     <span className="font-medium text-[16px] text-grayDark">
                                         Life span:
                                     </span>{" "}
-                                    {breedData.breeds[0].life_span} years
+                                    {breedData.breeds &&
+                                    breedData.breeds.length > 0
+                                        ? breedData.breeds[0].life_span
+                                        : "No life span"}{" "}
+                                    years
                                 </p>
                             </div>
                         </div>

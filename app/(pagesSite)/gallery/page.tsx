@@ -1,15 +1,15 @@
 "use client";
-import BtnUpload from "../../components/buttons/BtnUpload";
-import SortDownIcon from "../../assets/icons/actionIcon/SortDownIcon";
-import SortUpIcon from "../../assets/icons/actionIcon/SortUpIcon";
-import BreedList from "../../components/BreedList";
-import ImageList from "../../components/ImageList";
-import LimitImages from "../../components/LimitImages";
-import BtnBack from "../../components/buttons/BtnBack";
-import BtnRout from "../../components/buttons/BtnRout";
-import BtnSort from "../../components/buttons/BtnSort";
 import { usePathname } from "next/navigation";
 import React from "react";
+import BtnUpload from "../../components/buttons/BtnUpload";
+import BreedList from "../../components/inputsSelect/BreedList";
+import ImageList from "../../components/ImageList";
+import LimitImages from "../../components/inputsSelect/LimitImages";
+import BtnBack from "../../components/buttons/BtnBack";
+import BtnRout from "../../components/buttons/BtnRout";
+import SortList from "../../components/inputsSelect/SortList";
+import TypeList from "../../components/inputsSelect/TypeList";
+import BtnUpdate from "../../components/buttons/BtnUpdate";
 
 const Gallery = () => {
     const router = usePathname();
@@ -33,17 +33,18 @@ const Gallery = () => {
                 </div>
                 <BtnUpload />
             </div>
-            <div className="flex gap-[10px]">
-                <BreedList />
-                <LimitImages />
-                <BtnSort
-                    icon={<SortUpIcon className="w-[18px] h-[22px]" />}
-                    sortType="DESC"
-                />
-                <BtnSort
-                    icon={<SortDownIcon className="w-[18px] h-[22px]" />}
-                    sortType="ASC"
-                />
+            <div className="flex justify-between w-full pt-[10px] pb-[20px] px-[20px] bg-grayLight rounded-[20px]">
+                <div className="flex flex-col gap-[10px]">
+                    <SortList />
+                    <BreedList />
+                </div>
+                <div className="flex flex-col gap-[10px]">
+                    <TypeList />
+                    <div className="flex gap-[10px] items-end">
+                        <LimitImages />
+                        <BtnUpdate />
+                    </div>
+                </div>
             </div>
             <div className="overflow-y-scroll">
                 <ImageList />
