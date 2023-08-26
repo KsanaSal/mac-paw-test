@@ -5,7 +5,6 @@ import Image from "next/image";
 import SmileIcon from "../../assets/icons/feelIcons/SmileIcon";
 import SadSmileIcon from "../../assets/icons/feelIcons/SadSmileIcon";
 import HeartIcon from "../../assets/icons/feelIcons/HeartIcon";
-// import LeftChevronIcon from "../../assets/icons/actionIcon/LeftChevronIcon";
 import BtnRout from "../../components/buttons/BtnRout";
 import VoteTable from "../../assets/images/imagesRoutBtn/vote-table.png";
 import HeartSolidIcon from "../../assets/icons/feelIcons/HeartSolidIcon";
@@ -17,7 +16,7 @@ const Voting = () => {
     const isActive = router === link;
 
     return (
-        <div className="flex flex-col w-full bg-white p-[20px] rounded-[20px] gap-[20px]">
+        <div className="flex flex-col w-full h-[770px] bg-white p-[20px] rounded-[20px] gap-[20px]">
             <div className="flex gap-[10px]">
                 <BtnBack />
                 <BtnRout

@@ -23,6 +23,7 @@ const config: Config = {
                     accentThird30: "#97EAB94D",
                     white60: "#FFFFFF99",
                     primaryDark20: "#FF868E33",
+                    primaryLight60: "#FF868E99",
                 },
             },
             dropShadow: {
