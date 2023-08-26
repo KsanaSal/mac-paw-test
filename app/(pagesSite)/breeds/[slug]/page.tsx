@@ -24,14 +24,14 @@ const Breed = ({ params }: { params: { slug: string } }) => {
     return (
         <>
             {breedData && (
-                <div className="flex flex-col w-[680px] h-[770px] bg-white p-[20px] rounded-[20px] gap-[20px]">
+                <div className="flex flex-col w-[680px] h-[770px] bg-white dark:bg-transparent-with5 p-[20px] rounded-[20px] gap-[20px]">
                     <div className="flex gap-[10px]">
                         <BtnBack />
                         <BtnRout
                             extraStyles={`${
                                 isActive
                                     ? "bg-primaryDark text-white"
-                                    : "bg-primaryLight text-primaryDark"
+                                    : "bg-primaryLight dark:bg-transparent-primaryDark20 text-primaryDark"
                             } group-hover:bg-primaryLight group-active:bg-primaryDark group-active:text-white`}
                             link={link}
                             text={"Breeds"}
@@ -56,8 +56,8 @@ const Breed = ({ params }: { params: { slug: string } }) => {
                             className="h-full w-[unset] object-contain rounded-[20px] overflow-hidden"
                         />
                     </div>
-                    <div className="flex flex-col items-center gap-[20px] border-2 border-primaryLight rounded-[20px] relative min-h-[204px] mt-[30px] px-[20px] pb-[20px] w-[640px]">
-                        <h1 className="text-[36px] font-medium text-grayDark absolute top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-white py-[5px] px-[40px] rounded-[20px]">
+                    <div className="flex flex-col items-center gap-[20px] border-2 border-primaryLight dark:border-transparent-primaryDark20 rounded-[20px] relative min-h-[204px] mt-[30px] px-[20px] pb-[20px] w-[640px]">
+                        <h1 className="text-[36px] font-medium text-grayDark absolute top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-white dark:bg-[#282828] py-[5px] px-[40px] rounded-[20px]">
                             {breedData.breeds && breedData.breeds.length > 0
                                 ? breedData.breeds[0].name
                                 : "No breed"}

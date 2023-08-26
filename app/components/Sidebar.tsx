@@ -20,7 +20,7 @@ const Sidebar = () => {
                 <a
                     href="/"
                     title="Logo page"
-                    className="transition ease-in-out delay-150 hover:-translate-y-1 duration-300 hover:drop-shadow-textDark hover:scale-110 hover:fill-primaryDark"
+                    className="transition ease-in-out delay-150 text-grayDark hover:-translate-y-1 duration-300 hover:drop-shadow-textDark hover:scale-110 hover:text-primaryDark"
                 >
                     <Logo />
                 </a>

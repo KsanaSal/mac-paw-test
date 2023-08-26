@@ -37,9 +37,9 @@ const BreedList = () => {
                 defaultValue={""}
                 className={`${
                     isActive
-                        ? "bg-white text-grayDark w-[290px]"
-                        : "bg-grayLight w-[226px] text-grayMedium"
-                } h-[40px] rounded-[10px] py-[8px] pl-[10px] text-[16px]  border outline-none hover:outline-none hover:border-primaryLight active:outline-none active:border-primaryDark`}
+                        ? "bg-white dark:bg-grayLight text-grayDark w-[290px]"
+                        : "bg-grayLight dark:bg-transparent-with5 w-[226px] text-grayMedium dark:border-transparent-primaryDark20 dark:border-[2px]"
+                } h-[40px] rounded-[10px] py-[8px] pl-[10px] text-[16px]  border-0  outline-none hover:outline-none hover:border-primaryLight active:outline-none active:border-primaryDark`}
             >
                 <option value="">{isActive ? "None" : "All breeds"}</option>
                 {breeds &&

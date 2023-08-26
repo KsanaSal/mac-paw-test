@@ -18,9 +18,9 @@ const BtnSort = ({
                 dispatch(setSortOrder(sortType));
             }}
             type="button"
-            className={`flex items-center justify-center bg-grayLight w-[40px] h-[40px] rounded-[10px] text-grayMedium  hover:border-[2px] hover:border-primaryLight hover:text-primaryDark ${
+            className={`flex items-center justify-center bg-grayLight dark:bg-transparent-with5 w-[40px] h-[40px] rounded-[10px] text-grayMedium  hover:border-[2px] hover:border-primaryLight hover:text-primaryDark ${
                 sortOrder === sortType &&
-                "border-primaryDark text-primaryDark border-[2px]"
+                "border-primaryDark dark:border-transparent-primaryDark20 text-primaryDark border-[2px]"
             }`}
         >
             {icon}

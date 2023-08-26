@@ -10,9 +10,9 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                grayLight: "#F8F8F7",
+                grayLight: "var(--grayLight)",
                 grayMedium: "#8C8C8C",
-                grayDark: "#1D1D1D",
+                grayDark: "var(--grayDark)",
                 primaryLight: "#FBE0DC",
                 primaryDark: "#FF868E",
                 accentPrimary: "#B4B7FF",
@@ -23,6 +23,8 @@ const config: Config = {
                     accentSecondary30: "#FFD2804D",
                     accentThird30: "#97EAB94D",
                     white60: "#FFFFFF99",
+                    with5: "#FFFFFF0D",
+                    with10: "#FFFFFF1A",
                     primaryDark20: "#FF868E33",
                     primaryLight60: "#FF868E99",
                 },

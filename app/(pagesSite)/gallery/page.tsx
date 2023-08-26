@@ -17,7 +17,7 @@ const Gallery = () => {
     const isActive = router === link;
 
     return (
-        <div className="flex flex-col w-full h-[770px] bg-white p-[20px] rounded-[20px] gap-[20px]">
+        <div className="flex flex-col w-full h-[770px] bg-white dark:bg-transparent-with5 p-[20px] rounded-[20px] gap-[20px]">
             <div className="flex justify-between">
                 <div className="flex gap-[10px]">
                     <BtnBack />
@@ -33,7 +33,7 @@ const Gallery = () => {
                 </div>
                 <BtnUpload />
             </div>
-            <div className="flex justify-between w-full pt-[10px] pb-[20px] px-[20px] bg-grayLight rounded-[20px]">
+            <div className="flex justify-between w-full pt-[10px] pb-[20px] px-[20px] bg-grayLight dark:bg-transparent-with5 rounded-[20px]">
                 <div className="flex flex-col gap-[10px]">
                     <SortList />
                     <BreedList />

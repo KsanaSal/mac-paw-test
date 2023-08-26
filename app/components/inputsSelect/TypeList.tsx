@@ -19,7 +19,7 @@ const TypeList = () => {
                 id="type"
                 name="limit"
                 defaultValue={"jpg,png"}
-                className="bg-white w-[290px] h-[40px] rounded-[10px] py-[8px] pl-[10px] text-[16px] text-grayDark border outline-none hover:outline-none hover:border-primaryLight active:outline-none active:border-primaryDark"
+                className="bg-white dark:bg-grayLight w-[290px] h-[40px] rounded-[10px] py-[8px] pl-[10px] text-[16px] text-grayDark border-0 outline-none hover:outline-none hover:border-primaryLight active:outline-none active:border-primaryDark"
             >
                 <option value="all">All</option>
                 <option value="jpg,png">Static</option>

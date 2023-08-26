@@ -12,7 +12,7 @@ const BtnFeel = ({ link, icon }: { link: string; icon: JSX.Element }) => {
             className={`w-[60px] h-[60px]  rounded-[20px] flex justify-center items-center hover:bg-primaryLight active:bg-primaryDark active:text-white ${
                 isActive
                     ? "bg-primaryDark text-white"
-                    : "bg-white text-primaryDark"
+                    : "bg-white dark:bg-transparent-with5 text-primaryDark"
             }`}
         >
             {icon}

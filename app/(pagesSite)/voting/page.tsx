@@ -16,7 +16,7 @@ const Voting = () => {
     const isActive = router === link;
 
     return (
-        <div className="flex flex-col w-full h-[770px] bg-white p-[20px] rounded-[20px] gap-[20px]">
+        <div className="flex flex-col w-full h-[770px] bg-white dark:bg-transparent-with5 p-[20px] rounded-[20px] gap-[20px]">
             <div className="flex gap-[10px]">
                 <BtnBack />
                 <BtnRout
@@ -35,7 +35,7 @@ const Voting = () => {
                     alt="Vote table"
                     className="w-[640px] h-[360px] rounded-[20px] bg-green-500"
                 />
-                <div className="w-[256px] h-20 flex gap-[4px] absolute bottom-[-40px] left-[50%] translate-x-[-50%] bg-white rounded-[20px] p-[4px]">
+                <div className="w-[248px] flex gap-[4px] absolute bottom-[-40px] left-[50%] translate-x-[-50%] bg-white border-[4px] border-white dark:border-[#282828] rounded-[20px]">
                     <div className="w-20 h-20  rounded-l-[20px] flex justify-center items-center text-white bg-accentThird hover:bg-[#97EAB94D] hover:text-accentThird active:text-white active:bg-accentThird ">
                         <SmileIcon className="w-[30px] h-[30px] z-10" />
                     </div>

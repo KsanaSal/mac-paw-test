@@ -23,7 +23,7 @@ const BtnTheme = () => {
 
     return (
         <div className="flex items-center gap-[5px]">
-            <div className="w-[24px] h-[24px] bg-white flex justify-center items-center rounded-[50%]">
+            <div className="w-[24px] h-[24px] bg-white dark:bg-transparent-with5 flex justify-center items-center rounded-[50%]">
                 {resolvedTheme === "dark" ? <EyeClose /> : <EyeOpen />}
             </div>
             <Switch
@@ -36,14 +36,14 @@ const BtnTheme = () => {
                 className={`${
                     enabled ? "bg-primaryLight" : "bg-transparent-primaryDark20"
                 }
-                            "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primaryLight focus:ring-offset-2"
+                            "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-0 items-center pl-[4px] dark:pr-[4px] border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-transparent-with5 foc  focus:ring-offset-2"
                         `}
             >
                 <span className="sr-only">Use setting</span>
                 <span
                     aria-hidden="true"
                     className={`${enabled ? "translate-x-5" : "translate-x-0"}
-                                "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-primaryDark shadow ring-0 transition duration-200 ease-in-out"`}
+                                "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-primaryDark  shadow ring-0 transition duration-200 ease-in-out"`}
                 />
             </Switch>
         </div>
