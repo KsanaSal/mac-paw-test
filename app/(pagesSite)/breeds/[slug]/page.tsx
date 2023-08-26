@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 import BtnBack from "../../../components/buttons/BtnBack";
 import BtnRout from "../../../components/buttons/BtnRout";
 import Image from "next/image";
-import { IImage, useGetBreedsById } from "@/app/api/useBreeds";
+import { IImage, useGetBreedsById } from "../../../api/useBreeds";
 import { useEffect, useState } from "react";
 
 const Breed = ({ params }: { params: { slug: string } }) => {
