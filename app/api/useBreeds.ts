@@ -59,6 +59,11 @@ export const useGetImages = (): IGetImagesResponse => {
 export interface IBreed {
     id: string;
     name: string;
+    description: string;
+    origin: string;
+    temperament: string;
+    life_span: string;
+    weight: { imperial: string; metric: string };
 }
 
 interface IGetBreedsResponse {
@@ -86,6 +91,24 @@ export const useGetBreeds = (): IGetBreedsResponse => {
     };
 };
 
+interface IGetBreedsByIdResponse {
+    breed: IImage;
+    isLoading: boolean;
+    isBreedsError: any;
+}
+
+export const useGetBreedsById = (id: string): IGetBreedsByIdResponse => {
+    const { data, error, isLoading }: IFetchResponse<IImage> = useSWR(
+        `${apiUrl}${API_PATH.IMAGES}/${id}`,
+        fetcher
+    );
+    console.log(data);
+    return {
+        breed: data,
+        isLoading,
+        isBreedsError: error,
+    };
+};
 // export const useRoles = (emailId: string, location: number) => {
 //     const [responseStatus, setResponseStatus] = useState<number | null>(null);
 //     async function sendUpdateRequest(url: string) {

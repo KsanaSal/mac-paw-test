@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { IImage, useGetImages } from "../api/useBreeds";
+import { useRouter } from "next/navigation";
 // import { currentBreedIdSelector } from "../redux/searchImages/selectorSearchImages";
 // import { useSelector } from "react-redux";
 
@@ -8,6 +9,7 @@ const ImageList = () => {
     const [images, setImages] = useState<IImage[]>([]);
     const [chunkedImages, setChunkedImages] = useState<IImage[][]>([]);
     const { data } = useGetImages();
+    const router = useRouter();
     // const currentBreedId = useSelector(currentBreedIdSelector);
 
     useEffect(() => {
@@ -34,6 +36,7 @@ const ImageList = () => {
             {chunkedImages.map((chunk) =>
                 chunk.map((image, index) => (
                     <div
+                        onClick={() => router.push(`/breeds/${image.id}`)}
                         data-index={index}
                         key={index}
                         className={`bg-slate-400 rounded-[20px] overflow-hidden relative ${

@@ -10,7 +10,7 @@ import ImageList from "../../components/ImageList";
 import BreedList from "../../components/BreedList";
 import LimitImages from "../../components/LimitImages";
 
-const Voting = () => {
+const Breeds = () => {
     const router = usePathname();
     const link = "/breeds";
     const isActive = router === link;
@@ -45,4 +45,4 @@ const Voting = () => {
         </div>
     );
 };
-export default Voting;
+export default Breeds;

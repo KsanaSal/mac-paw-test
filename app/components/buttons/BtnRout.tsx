@@ -13,7 +13,7 @@ const BtnRout = ({
         <Link
             href={link}
             type="button"
-            className={`flex  justify-center w-[138px] pb-[10px] pt-[14px] rounded-[10px] uppercase font-medium ${extraStyles}`}
+            className={`flex  justify-center px-[30px] pb-[10px] pt-[14px] rounded-[10px] uppercase font-medium ${extraStyles}`}
         >
             {text}
         </Link>
