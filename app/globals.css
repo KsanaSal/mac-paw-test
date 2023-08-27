@@ -3,6 +3,15 @@
 @tailwind utilities;
 
 @layer base {
+    :root {
+        --grayLight: #f8f8f7;
+        --grayDark: #1d1d1d;
+    }
+
+    :root[class~="dark"] {
+        --grayLight: #1d1d1d;
+        --grayDark: #f8f8f7;
+    }
     html {
         @apply font-serif;
         box-sizing: border-box;

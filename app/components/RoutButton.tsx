@@ -1,4 +1,5 @@
 import { usePathname } from "next/navigation";
+
 import BtnRout from "./buttons/BtnRout";
 
 const RoutButton = ({
@@ -28,7 +29,7 @@ const RoutButton = ({
                 extraStyles={`${
                     isActive
                         ? "bg-primaryDark text-white"
-                        : "bg-white text-primaryDark"
+                        : "bg-white dark:bg-transparent-with10 text-primaryDark"
                 } group-hover:bg-primaryLight group-active:bg-primaryDark group-active:text-white`}
                 link={link}
                 text={text}

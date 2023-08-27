@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+
 import imagesReducer from "./searchImages/sliceSearchImages";
 
 const rootReducer = combineReducers({

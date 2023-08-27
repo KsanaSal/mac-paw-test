@@ -1,13 +1,17 @@
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { API_PATH } from "./apiPath";
 import { useSelector } from "react-redux";
+
 import {
     currentBreedIdSelector,
+    fetchTriggerSelector,
     limitImagesSelector,
+    mimeTypeSelector,
     sortOrderSelector,
 } from "../redux/searchImages/selectorSearchImages";
+
 const apiUrl = process.env.NEXT_PUBLIC_API_URL as string;
 const apiKey = process.env.NEXT_PUBLIC_API_KEY as string;
 const myHeaders = new Headers();
@@ -43,15 +47,31 @@ export const useGetImages = (): IGetImagesResponse => {
     const currentBreedId = useSelector(currentBreedIdSelector);
     const limitImages = useSelector(limitImagesSelector);
     const sortOrder = useSelector(sortOrderSelector);
+    const mimeType = useSelector(mimeTypeSelector);
+    const fetchTrigger = useSelector(fetchTriggerSelector);
 
-    const { data, error, isLoading }: IFetchResponse<IImage[]> = useSWR(
-        `${apiUrl}${API_PATH.SEARCH}?format=json&limit=${limitImages}&has_breeds=1&breed_ids=${currentBreedId}&order=${sortOrder}`,
+    const { trigger, data, isMutating, error } = useSWRMutation(
+        `${apiUrl}${API_PATH.SEARCH}?format=json&limit=${limitImages}&breed_ids=${currentBreedId}&order=${sortOrder}&mime_types=${mimeType}`,
         fetcher
     );
-    console.log(data);
+
+    const handleUpdate = async () => {
+        try {
+            await trigger();
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        if (fetchTrigger) {
+            handleUpdate();
+        }
+    }, [currentBreedId, limitImages, sortOrder, mimeType, fetchTrigger]);
+
     return {
         data,
-        isLoading,
+        isLoading: isMutating,
         isImagesError: error,
     };
 };
@@ -83,7 +103,6 @@ export const useGetBreeds = (): IGetBreedsResponse => {
         `${apiUrl}${API_PATH.BREEDS}`,
         fetcher
     );
-    console.log(data);
     return {
         breedList: data,
         isLoading,
@@ -102,44 +121,9 @@ export const useGetBreedsById = (id: string): IGetBreedsByIdResponse => {
         `${apiUrl}${API_PATH.IMAGES}/${id}`,
         fetcher
     );
-    console.log(data);
     return {
         breed: data,
         isLoading,
         isBreedsError: error,
     };
 };
-// export const useRoles = (emailId: string, location: number) => {
-//     const [responseStatus, setResponseStatus] = useState<number | null>(null);
-//     async function sendUpdateRequest(url: string) {
-//         return fetch(url, {
-//             method: "GET",
-//         }).then((res) => {
-//             setResponseStatus(res.status);
-//             return res.json();
-//         });
-//     }
-//     const { trigger, data, isMutating } = useSWRMutation(
-//         emailId ? `${apiUrl}${API_PATH.MEMBERS_ROLES}/${emailId}` : null,
-//         sendUpdateRequest
-//     );
-//     const handleUpdate = async () => {
-//         if (!emailId) return;
-//         try {
-//             setResponseStatus(null);
-//             await trigger();
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     };
-//     useEffect(() => {
-//         if (location > 1) {
-//             handleUpdate();
-//         }
-//     }, [location]);
-//     return {
-//         data,
-//         status: responseStatus,
-//         isMutating,
-//     };
-// };

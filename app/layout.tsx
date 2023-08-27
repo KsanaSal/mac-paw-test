@@ -1,9 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-// import { Inter } from "next/font/google";
-import Sidebar from "./components/Sidebar";
 
-// const inter = Inter({ subsets: ["latin"] });
+import Sidebar from "./components/Sidebar";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -16,10 +15,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <body className="bg-grayLight flex justify-between border-2 border-red-500">
-                <Sidebar />
-                {children}
+                <Providers>
+                    <Sidebar />
+                    {children}
+                </Providers>
             </body>
         </html>
     );
