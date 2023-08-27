@@ -5,28 +5,25 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 
-import BtnFavourite from "./buttons/BtnFavourite";
 import { isBreedsFoundSelector } from "../redux/searchImages/selectorSearchImages";
 import NotFound from "./NotFound";
 import {
     setIsBreedsFound,
     setSearchValue,
 } from "../redux/searchImages/sliceSearchImages";
-import {
-    IImageFavorite,
-    useAddFavorites,
-    useGetFavorites,
-} from "../api/useFavourites";
+import { IImageFavorite } from "../api/useFavourites";
+import { useAddVotes, useGetVoting } from "../api/useVoting";
 
-const ImageListFavourite = () => {
+const ImageListVotes = () => {
     const [images, setImages] = useState<IImageFavorite[]>([]);
     const [chunkedImages, setChunkedImages] = useState<IImageFavorite[][]>([]);
-    const { data } = useGetFavorites();
+    const { data } = useGetVoting();
     const routerPage = usePathname();
-    const link = "/favorites";
+    const link = "/likes";
+    const isActive = routerPage === link;
     const isBreedsFound = useSelector(isBreedsFoundSelector);
     const dispatch = useDispatch();
-    useAddFavorites();
+    useAddVotes();
 
     useEffect(() => {
         dispatch(setIsBreedsFound(true));
@@ -35,7 +32,11 @@ const ImageListFavourite = () => {
 
     useEffect(() => {
         if (data) {
-            setImages(data);
+            setImages(
+                isActive
+                    ? data.filter((data) => data.value === 1)
+                    : data.filter((data) => data.value === 0)
+            );
         }
     }, [data]);
 
@@ -51,7 +52,6 @@ const ImageListFavourite = () => {
     }, [images]);
 
     const chunkSize = 10;
-    console.log(data);
 
     return (
         <>
@@ -93,13 +93,6 @@ const ImageListFavourite = () => {
                                         alt={image.image.id}
                                         className="w-full h-full object-cover"
                                     />
-                                    <div className="absolute transition ease-in-out duration-300 top-0 left-0 w-full h-full bg-transparent-primaryLight60 opacity-0 hover:opacity-100">
-                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                            <BtnFavourite
-                                                imageId={image.image.id}
-                                            />
-                                        </div>
-                                    </div>
                                 </div>
                             ))
                         )}
@@ -112,4 +105,4 @@ const ImageListFavourite = () => {
     );
 };
 
-export default ImageListFavourite;
+export default ImageListVotes;

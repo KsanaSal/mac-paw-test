@@ -169,7 +169,6 @@ export const useGetFavorites = (): IGetFavoritesImagesResponse => {
         if (favoriteImageId) {
             handleUpdate();
         }
-        console.log(data);
     }, [fetchTrigger]);
 
     return {

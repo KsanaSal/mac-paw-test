@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { API_PATH } from "./apiPath";
 import { useSelector } from "react-redux";
 

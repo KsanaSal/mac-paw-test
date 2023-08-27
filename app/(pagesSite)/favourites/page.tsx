@@ -5,8 +5,7 @@ import { usePathname } from "next/navigation";
 
 import BtnBack from "../../components/buttons/BtnBack";
 import BtnRout from "../../components/buttons/BtnRout";
-import ImageList from "../../components/ImageList";
-import ImageListFavourite from "@/app/components/ImageListFavourite";
+import ImageListFavourite from "../../components/ImageListFavourite";
 
 const Favourites = () => {
     const router = usePathname();

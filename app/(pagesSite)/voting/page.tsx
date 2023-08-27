@@ -17,23 +17,26 @@ import {
     setLimitImages,
     setVotedImageId,
     setVotes,
-} from "@/app/redux/searchImages/sliceSearchImages";
-import { IImage, useGetImages } from "@/app/api/useBreeds";
-import { fetchTriggerSelector } from "@/app/redux/searchImages/selectorSearchImages";
-import { useAddVotes } from "@/app/api/useVoting";
-import { useAddFavorites } from "@/app/api/useFavourites";
+} from "../../redux/searchImages/sliceSearchImages";
+import { IImage, useGetImages } from "../../api/useBreeds";
+import { fetchTriggerSelector } from "../../redux/searchImages/selectorSearchImages";
+import { useAddVotes } from "../../api/useVoting";
+import { useAddFavorites } from "../../api/useFavourites";
 
 const Voting = () => {
     const router = usePathname();
     const link = "/voting";
     const isActive = router === link;
     const dispatch = useDispatch();
-    dispatch(setLimitImages(1));
     const { data } = useGetImages();
     const [image, setImage] = useState<IImage>();
     const fetchTrigger = useSelector(fetchTriggerSelector);
     useAddVotes();
     useAddFavorites();
+
+    useEffect(() => {
+        dispatch(setLimitImages(1));
+    }, [dispatch]);
 
     useEffect(() => {
         if (data) {

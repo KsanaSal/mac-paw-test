@@ -2,8 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 
 import BtnUpload from "../../components/buttons/BtnUpload";
 import BreedList from "../../components/inputsSelect/BreedList";
@@ -14,11 +12,11 @@ import BtnRout from "../../components/buttons/BtnRout";
 import SortList from "../../components/inputsSelect/SortList";
 import TypeList from "../../components/inputsSelect/TypeList";
 import BtnUpdate from "../../components/buttons/BtnUpdate";
-import BtnClose from "../../components/buttons/BtnClose";
-import Photo from "../../assets/images/Photo.png";
-import BtnUploadPhoto from "../../components/buttons/BtnUploadPhoto";
-import TickIcon from "../../assets/icons/warningIcons/TickIcon";
-import CircleCrossIcon from "../../assets/icons/warningIcons/CircleCrossIcon";
+// import BtnClose from "../../components/buttons/BtnClose";
+// import Photo from "../../assets/images/Photo.png";
+// import BtnUploadPhoto from "../../components/buttons/BtnUploadPhoto";
+// import TickIcon from "../../assets/icons/warningIcons/TickIcon";
+// import CircleCrossIcon from "../../assets/icons/warningIcons/CircleCrossIcon";
 
 const Gallery = () => {
     const router = usePathname();

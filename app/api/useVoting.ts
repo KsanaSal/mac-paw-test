@@ -1,20 +1,16 @@
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { API_PATH } from "./apiPath";
 import { useSelector } from "react-redux";
 
 import {
-    currentBreedIdSelector,
     favoriteImageIdRemoveSelector,
-    favoriteImageIdSelector,
     fetchTriggerSelector,
-    limitImagesSelector,
-    mimeTypeSelector,
-    sortOrderSelector,
     votedImageIdSelector,
     votesSelector,
 } from "../redux/searchImages/selectorSearchImages";
+import { IImage } from "./useBreeds";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL as string;
 const apiKey = process.env.NEXT_PUBLIC_API_KEY as string;
@@ -33,48 +29,30 @@ const fetcher = (url: string) =>
         .then((res) => res.json())
         .then();
 
-export interface IImage {
-    id: string;
-    url: string;
-    height: number;
-    width: number;
-    breeds: IBreed[];
-}
-
 interface IGetImagesResponse {
     data: IImage[];
     isImagesError: any;
     isLoading: boolean;
 }
 
-export interface IImageFavorite {
+export interface IImageVotes {
     id: number;
     created_at: string;
     image_id: string;
     url: string;
     image: { id: string; url: string };
+    value: number;
 }
-interface IGetFavoritesImagesResponse {
-    data: IImageFavorite[];
+interface IGetVotesImagesResponse {
+    data: IImageVotes[];
     isImagesError: any;
     isLoading: boolean;
-}
-
-export interface IBreed {
-    id: string;
-    name: string;
-    description: string;
-    origin: string;
-    temperament: string;
-    life_span: string;
-    weight: { imperial: string; metric: string };
 }
 
 export const useAddVotes = (): IGetImagesResponse => {
     const votes = useSelector(votesSelector);
     const votedImageId = useSelector(votedImageIdSelector);
     const fetchTrigger = useSelector(fetchTriggerSelector);
-    console.log(votedImageId, votes);
     async function sendUpdateRequest(url: string) {
         return fetch(url, {
             method: "POST",
@@ -148,8 +126,7 @@ export const useDeleteFavorites = (): IGetImagesResponse => {
     };
 };
 
-export const useGetFavorites = (): IGetFavoritesImagesResponse => {
-    const favoriteImageId = useSelector(favoriteImageIdSelector);
+export const useGetVoting = (): IGetVotesImagesResponse => {
     const fetchTrigger = useSelector(fetchTriggerSelector);
     async function sendUpdateRequest(url: string) {
         return fetch(url, {
@@ -161,11 +138,10 @@ export const useGetFavorites = (): IGetFavoritesImagesResponse => {
     }
 
     const { trigger, data, isMutating, error } = useSWRMutation(
-        `${apiUrl}${API_PATH.FAVOURITES}`,
+        `${apiUrl}${API_PATH.VOTES}`,
         sendUpdateRequest,
         { revalidate: true }
     );
-
     const handleUpdate = async () => {
         try {
             await trigger();
@@ -174,15 +150,10 @@ export const useGetFavorites = (): IGetFavoritesImagesResponse => {
         }
     };
 
-    // useEffect(() => {
-    //     handleUpdate();
-    // }, []);
-
     useEffect(() => {
-        if (favoriteImageId) {
+        if (true) {
             handleUpdate();
         }
-        console.log(data);
     }, [fetchTrigger]);
 
     return {
