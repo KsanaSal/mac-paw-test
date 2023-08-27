@@ -14,16 +14,23 @@ const BtnFavourite = ({ imageId }: { imageId: string }) => {
     const { data } = useGetFavorites();
     useDeleteFavorites();
     const fetchTrigger = useSelector(fetchTriggerSelector);
+
     return (
         <button
             onClick={() => {
-                data && data.findIndex((item) => item.image_id === imageId) > -1
-                    ? dispatch(
-                          setFavoriteImageIdRemove(
-                              data.find((item) => item.image_id === imageId)?.id
-                          )
-                      )
-                    : dispatch(setFavoriteImageId(imageId));
+                if (
+                    data &&
+                    data.findIndex((item) => item.image_id === imageId) > -1
+                ) {
+                    dispatch(
+                        setFavoriteImageIdRemove(
+                            data.find((item) => item.image_id === imageId)?.id
+                        )
+                    );
+                } else {
+                    dispatch(setFavoriteImageId(imageId));
+                }
+
                 dispatch(setFetchTrigger(fetchTrigger + 1));
             }}
             type="button"

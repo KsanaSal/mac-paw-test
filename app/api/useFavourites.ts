@@ -157,7 +157,8 @@ export const useGetFavorites = (): IGetFavoritesImagesResponse => {
 
     const { trigger, data, isMutating, error } = useSWRMutation(
         `${apiUrl}${API_PATH.FAVOURITES}`,
-        sendUpdateRequest
+        sendUpdateRequest,
+        { revalidate: true }
     );
 
     const handleUpdate = async () => {
@@ -168,11 +169,16 @@ export const useGetFavorites = (): IGetFavoritesImagesResponse => {
         }
     };
 
+    // useEffect(() => {
+    //     handleUpdate();
+    // }, []);
+
     useEffect(() => {
         if (favoriteImageId) {
             handleUpdate();
         }
-    }, [favoriteImageId, fetchTrigger]);
+        console.log(data);
+    }, [fetchTrigger]);
 
     return {
         data,

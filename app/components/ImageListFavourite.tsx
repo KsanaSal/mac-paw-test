@@ -13,15 +13,19 @@ import {
     setIsBreedsFound,
     setSearchValue,
 } from "../redux/searchImages/sliceSearchImages";
-import { useAddFavorites } from "../api/useFavourites";
+import {
+    IImageFavorite,
+    useAddFavorites,
+    useGetFavorites,
+} from "../api/useFavourites";
 
-const ImageList = () => {
-    const [images, setImages] = useState<IImage[]>([]);
-    const [chunkedImages, setChunkedImages] = useState<IImage[][]>([]);
-    const { data } = useGetImages();
+const ImageListFavourite = () => {
+    const [images, setImages] = useState<IImageFavorite[]>([]);
+    const [chunkedImages, setChunkedImages] = useState<IImageFavorite[][]>([]);
+    const { data } = useGetFavorites();
     const router = useRouter();
     const routerPage = usePathname();
-    const link = "/gallery";
+    const link = "/favorites";
     const isActive = routerPage === link;
     const isBreedsFound = useSelector(isBreedsFoundSelector);
     const dispatch = useDispatch();
@@ -50,6 +54,7 @@ const ImageList = () => {
     }, [images]);
 
     const chunkSize = 10;
+    console.log(data);
 
     return (
         <>
@@ -59,11 +64,6 @@ const ImageList = () => {
                         {chunkedImages.map((chunk) =>
                             chunk.map((image, index) => (
                                 <div
-                                    onClick={() =>
-                                        image.breeds.length > 0 &&
-                                        !isActive &&
-                                        router.push(`/breeds/${image.id}`)
-                                    }
                                     data-index={index}
                                     key={index}
                                     className={`bg-slate-400 rounded-[20px] overflow-hidden relative ${
@@ -91,31 +91,19 @@ const ImageList = () => {
                                     }`}
                                 >
                                     <Image
-                                        width={image.width}
-                                        height={image.height}
-                                        src={image.url}
-                                        alt={image.id}
+                                        fill
+                                        // width={image.width}
+                                        // height={image.height}
+                                        src={image.image.url}
+                                        alt={image.image.id}
                                         className="w-full h-full object-cover"
                                     />
                                     <div className="absolute transition ease-in-out duration-300 top-0 left-0 w-full h-full bg-transparent-primaryLight60 opacity-0 hover:opacity-100">
-                                        {isActive ? (
-                                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                                <BtnFavourite
-                                                    imageId={image.id}
-                                                />
-                                            </div>
-                                        ) : (
-                                            <div className="absolute bottom-[10px] left-1/2 -translate-x-1/2 text-garyDark dark:text-primaryDark bg-white dark:bg-grayLight py-[5px] px-[42px] rounded-[10px] text-center">
-                                                {image.breeds &&
-                                                image.breeds.length > 0 ? (
-                                                    <p>
-                                                        {image.breeds[0].name}
-                                                    </p>
-                                                ) : (
-                                                    <p>No breed</p>
-                                                )}
-                                            </div>
-                                        )}
+                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                            <BtnFavourite
+                                                imageId={image.image.id}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             ))
@@ -129,4 +117,4 @@ const ImageList = () => {
     );
 };
 
-export default ImageList;
+export default ImageListFavourite;
