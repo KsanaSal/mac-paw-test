@@ -11,6 +11,8 @@ export interface IBreedInitialState {
     fetchTrigger: number;
     favoriteImageId: string;
     favoriteImageIdRemove: string;
+    votes: boolean;
+    votedImageId: string;
 }
 
 const initialState: IBreedInitialState = {
@@ -24,6 +26,8 @@ const initialState: IBreedInitialState = {
     fetchTrigger: 1,
     favoriteImageId: "",
     favoriteImageIdRemove: "",
+    votes: false,
+    votedImageId: "",
 };
 
 const sliceBreeds = createSlice({
@@ -67,6 +71,14 @@ const sliceBreeds = createSlice({
         setFavoriteImageIdRemove: (state, action) => {
             state.favoriteImageIdRemove = action.payload;
         },
+
+        setVotes(state, action) {
+            state.votes = action.payload;
+        },
+
+        setVotedImageId(state, action) {
+            state.votedImageId = action.payload;
+        },
     },
 });
 
@@ -81,5 +93,7 @@ export const {
     setFetchTrigger,
     setFavoriteImageId,
     setFavoriteImageIdRemove,
+    setVotes,
+    setVotedImageId,
 } = sliceBreeds.actions;
 export default sliceBreeds.reducer;

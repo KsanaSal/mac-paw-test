@@ -22,3 +22,7 @@ export const favoriteImageIdSelector = (state: {
 export const favoriteImageIdRemoveSelector = (state: {
     images: IBreedInitialState;
 }) => state.images.favoriteImageIdRemove;
+export const votesSelector = (state: { images: IBreedInitialState }) =>
+    state.images.votes;
+export const votedImageIdSelector = (state: { images: IBreedInitialState }) =>
+    state.images.votedImageId;

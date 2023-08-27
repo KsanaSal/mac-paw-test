@@ -1,13 +1,19 @@
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { API_PATH } from "./apiPath";
 import { useSelector } from "react-redux";
 
 import {
+    currentBreedIdSelector,
     favoriteImageIdRemoveSelector,
     favoriteImageIdSelector,
     fetchTriggerSelector,
+    limitImagesSelector,
+    mimeTypeSelector,
+    sortOrderSelector,
+    votedImageIdSelector,
+    votesSelector,
 } from "../redux/searchImages/selectorSearchImages";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL as string;
@@ -64,20 +70,23 @@ export interface IBreed {
     weight: { imperial: string; metric: string };
 }
 
-export const useAddFavorites = (): IGetImagesResponse => {
-    const favoriteImageId = useSelector(favoriteImageIdSelector);
+export const useAddVotes = (): IGetImagesResponse => {
+    const votes = useSelector(votesSelector);
+    const votedImageId = useSelector(votedImageIdSelector);
+    const fetchTrigger = useSelector(fetchTriggerSelector);
+    console.log(votedImageId, votes);
     async function sendUpdateRequest(url: string) {
         return fetch(url, {
             method: "POST",
             headers: myHeaders,
-            body: JSON.stringify({ image_id: favoriteImageId }),
+            body: JSON.stringify({ image_id: votedImageId, value: votes }),
         }).then((res) => {
             return res.json();
         });
     }
 
     const { trigger, data, isMutating, error } = useSWRMutation(
-        `${apiUrl}${API_PATH.FAVOURITES}`,
+        `${apiUrl}${API_PATH.VOTES}`,
         sendUpdateRequest
     );
 
@@ -90,10 +99,10 @@ export const useAddFavorites = (): IGetImagesResponse => {
     };
 
     useEffect(() => {
-        if (favoriteImageId) {
+        if (votedImageId) {
             handleUpdate();
         }
-    }, [favoriteImageId]);
+    }, [votedImageId, votes]);
 
     return {
         data,
@@ -164,6 +173,10 @@ export const useGetFavorites = (): IGetFavoritesImagesResponse => {
             console.log(error);
         }
     };
+
+    // useEffect(() => {
+    //     handleUpdate();
+    // }, []);
 
     useEffect(() => {
         if (favoriteImageId) {

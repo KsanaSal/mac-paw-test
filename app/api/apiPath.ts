@@ -3,4 +3,5 @@ export const API_PATH = {
     BREEDS: "breeds",
     IMAGES: "images",
     FAVOURITES: "favourites",
+    VOTES: "votes",
 };
