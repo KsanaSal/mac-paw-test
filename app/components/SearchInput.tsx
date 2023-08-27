@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 
-import SearchIcon from "../assets/icons/actionIcon/SearchIcon";
+import SearchIcon from "../assets/icons/actionIcons/SearchIcon";
 import {
     setSearchName,
     setSearchValue,

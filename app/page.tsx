@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import GirlAndPet from "./assets/images/girl-and-pet 1.png";
+import GirlAndPet from "./assets/images/girl-and-pet.png";
 
 export default function Home() {
     return (

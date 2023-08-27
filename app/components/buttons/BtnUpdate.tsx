@@ -1,4 +1,4 @@
-import ArrowLoaderIcon from "../../assets/icons/actionIcon/ArrowLoaderIcon";
+import ArrowLoaderIcon from "../../assets/icons/actionIcons/ArrowLoaderIcon";
 
 const BtnUpdate = () => {
     return (

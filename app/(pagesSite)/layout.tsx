@@ -22,7 +22,7 @@ export default function RootLayout({
             value={{ revalidateOnFocus: false, revalidateIfStale: false }}
         >
             <Provider store={store}>
-                <div className="flex flex-col my-[30px] mr-[30px] gap-[10px]">
+                <div className="flex flex-col my-[30px] mr-[30px] gap-[10px] relative">
                     <Header />
                     {children}
                 </div>

@@ -1,4 +1,4 @@
-import UploadIcon from "../../assets/icons/actionIcon/UploadIcon";
+import UploadIcon from "../../assets/icons/actionIcons/UploadIcon";
 
 const BtnUpload = () => {
     return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 
-import LeftChevronIcon from "../../assets/icons/actionIcon/LeftChevronIcon";
+import LeftChevronIcon from "../../assets/icons/actionIcons/LeftChevronIcon";
 
 const BtnBack = () => {
     const router = useRouter();
