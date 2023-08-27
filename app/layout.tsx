@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className="bg-grayLight flex justify-between border-2 border-red-500">
+            <body className="bg-grayLight flex justify-between border-2">
                 <Providers>
                     <Sidebar />
                     {children}
