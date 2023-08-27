@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+
 import { setSortOrder } from "../../redux/searchImages/sliceSearchImages";
 
 const SortList = () => {

@@ -1,11 +1,17 @@
 import { useState } from "react";
-import SearchIcon from "../assets/icons/actionIcon/SearchIcon";
 import { useDispatch } from "react-redux";
-import { setSearchValue } from "../redux/searchImages/sliceSearchImages";
+import { useRouter } from "next/navigation";
+
+import SearchIcon from "../assets/icons/actionIcon/SearchIcon";
+import {
+    setSearchName,
+    setSearchValue,
+} from "../redux/searchImages/sliceSearchImages";
 
 const SearchInput = () => {
     const [value, setValue] = useState("");
     const dispatch = useDispatch();
+    const router = useRouter();
 
     return (
         <div className="relative flex items-center">
@@ -19,7 +25,9 @@ const SearchInput = () => {
             <button
                 onClick={() => {
                     dispatch(setSearchValue(value));
+                    dispatch(setSearchName(value));
                     setValue("");
+                    router.push("/search");
                 }}
                 type="button"
                 className="absolute right-[10px] top-[50%] translate-y-[-50%]"

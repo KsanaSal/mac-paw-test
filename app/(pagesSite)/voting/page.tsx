@@ -1,7 +1,9 @@
 "use client";
+
 import React from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+
 import SmileIcon from "../../assets/icons/feelIcons/SmileIcon";
 import SadSmileIcon from "../../assets/icons/feelIcons/SadSmileIcon";
 import HeartIcon from "../../assets/icons/feelIcons/HeartIcon";

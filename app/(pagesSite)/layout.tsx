@@ -1,7 +1,9 @@
 "use client";
+
 import type { Metadata } from "next";
 import { Provider } from "react-redux";
 import { SWRConfig } from "swr";
+
 import Header from "../components/Header";
 import store from "../redux/store";
 

@@ -1,6 +1,7 @@
+import { useDispatch, useSelector } from "react-redux";
+
 import { sortOrderSelector } from "../../redux/searchImages/selectorSearchImages";
 import { setSortOrder } from "../../redux/searchImages/sliceSearchImages";
-import { useDispatch, useSelector } from "react-redux";
 
 const BtnSort = ({
     icon,

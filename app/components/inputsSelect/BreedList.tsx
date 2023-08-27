@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { IBreed, useGetBreeds } from "../../api/useBreeds";
 import { useDispatch, useSelector } from "react-redux";
+import { usePathname } from "next/navigation";
+
+import { IBreed, useGetBreeds } from "../../api/useBreeds";
 import {
     setCurrentBreedId,
     setIsBreedsFound,
 } from "../../redux/searchImages/sliceSearchImages";
-import { usePathname } from "next/navigation";
-import { searchValueSelector } from "@/app/redux/searchImages/selectorSearchImages";
+import { searchValueSelector } from "../../redux/searchImages/selectorSearchImages";
 
 const BreedList = () => {
     const [breeds, setBreeds] = useState<IBreed[]>([]);

@@ -7,6 +7,7 @@ export interface IBreedInitialState {
     mimeType: string;
     searchValue: string;
     isBreedsFound: boolean;
+    searchName: string;
 }
 
 const initialState: IBreedInitialState = {
@@ -16,6 +17,7 @@ const initialState: IBreedInitialState = {
     mimeType: "jpg,png",
     searchValue: "",
     isBreedsFound: true,
+    searchName: "",
 };
 
 const sliceBreeds = createSlice({
@@ -45,6 +47,10 @@ const sliceBreeds = createSlice({
         setIsBreedsFound: (state, action) => {
             state.isBreedsFound = action.payload;
         },
+
+        setSearchName: (state, action) => {
+            state.searchName = action.payload;
+        },
     },
 });
 
@@ -55,5 +61,6 @@ export const {
     setMimeTypes,
     setSearchValue,
     setIsBreedsFound,
+    setSearchName,
 } = sliceBreeds.actions;
 export default sliceBreeds.reducer;

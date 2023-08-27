@@ -12,3 +12,5 @@ export const searchValueSelector = (state: { images: IBreedInitialState }) =>
     state.images.searchValue;
 export const isBreedsFoundSelector = (state: { images: IBreedInitialState }) =>
     state.images.isBreedsFound;
+export const searchNameSelector = (state: { images: IBreedInitialState }) =>
+    state.images.searchName;

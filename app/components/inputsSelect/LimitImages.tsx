@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { usePathname } from "next/navigation";
+
 import { setLimitImages } from "../../redux/searchImages/sliceSearchImages";
-import { useEffect } from "react";
 
 const LimitImages = () => {
     const dispatch = useDispatch();

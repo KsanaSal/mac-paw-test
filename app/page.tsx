@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import GirlAndPet from "./assets/images/girl-and-pet 1.png";
 
 export default function Home() {

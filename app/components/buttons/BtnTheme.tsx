@@ -1,9 +1,11 @@
 "use client";
+
 import { Switch } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import EyeOpen from "@/app/assets/icons/EyeOpen";
-import EyeClose from "@/app/assets/icons/EyeClose";
+
+import EyeOpen from "../../assets/icons/EyeOpen";
+import EyeClose from "../../assets/icons/EyeClose";
 
 const BtnTheme = () => {
     const [enabled, setEnabled] = useState(false);

@@ -1,18 +1,18 @@
 "use client";
+
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+
 import BtnBack from "../../../components/buttons/BtnBack";
 import BtnRout from "../../../components/buttons/BtnRout";
-import Image from "next/image";
 import { IImage, useGetBreedsById } from "../../../api/useBreeds";
-import { useEffect, useState } from "react";
 
 const Breed = ({ params }: { params: { slug: string } }) => {
-    console.log(params);
     const router = usePathname();
     const link = "/breeds";
     const isActive = router === link;
     const [breedData, setBreedData] = useState<IImage>();
-    console.log(router);
     const { breed } = useGetBreedsById(params.slug);
 
     useEffect(() => {

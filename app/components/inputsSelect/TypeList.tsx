@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+
 import { setMimeTypes } from "../../redux/searchImages/sliceSearchImages";
 
 const TypeList = () => {

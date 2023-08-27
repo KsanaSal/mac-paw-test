@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { IImage, useGetImages } from "../api/useBreeds";
 import { usePathname, useRouter } from "next/navigation";
-import BtnFavourite from "./buttons/BtnFavourite";
 import { useDispatch, useSelector } from "react-redux";
+
+import { IImage, useGetImages } from "../api/useBreeds";
+import BtnFavourite from "./buttons/BtnFavourite";
 import {
     isBreedsFoundSelector,
     searchValueSelector,

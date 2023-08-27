@@ -1,6 +1,8 @@
 "use client";
+
 import { usePathname } from "next/navigation";
 import React from "react";
+
 import BtnUpload from "../../components/buttons/BtnUpload";
 import BreedList from "../../components/inputsSelect/BreedList";
 import ImageList from "../../components/ImageList";

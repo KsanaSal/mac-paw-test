@@ -1,17 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import EyeOpen from "../assets/icons/EyeOpen";
+
 import Logo from "../assets/icons/Logo";
 import RoutButton from "./RoutButton";
 import VoteTable from "../assets/images/imagesRoutBtn/vote-table.png";
 import PetBreeds from "../assets/images/imagesRoutBtn/pet-breeds.png";
 import ImagesSearch from "../assets/images/imagesRoutBtn/images-search.png";
 import BtnTheme from "./buttons/BtnTheme";
-
-// function classNames(...classes) {
-//     return classes.filter(Boolean).join(" ");
-// }
 
 const Sidebar = () => {
     return (

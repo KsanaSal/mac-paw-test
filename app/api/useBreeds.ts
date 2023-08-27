@@ -3,6 +3,7 @@ import useSWRMutation from "swr/mutation";
 import { useEffect, useState } from "react";
 import { API_PATH } from "./apiPath";
 import { useSelector } from "react-redux";
+
 import {
     currentBreedIdSelector,
     limitImagesSelector,
@@ -10,6 +11,7 @@ import {
     searchValueSelector,
     sortOrderSelector,
 } from "../redux/searchImages/selectorSearchImages";
+
 const apiUrl = process.env.NEXT_PUBLIC_API_URL as string;
 const apiKey = process.env.NEXT_PUBLIC_API_KEY as string;
 const myHeaders = new Headers();
