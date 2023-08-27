@@ -8,3 +8,7 @@ export const sortOrderSelector = (state: { images: IBreedInitialState }) =>
     state.images.sortOrder;
 export const mimeTypeSelector = (state: { images: IBreedInitialState }) =>
     state.images.mimeType;
+export const searchValueSelector = (state: { images: IBreedInitialState }) =>
+    state.images.searchValue;
+export const isBreedsFoundSelector = (state: { images: IBreedInitialState }) =>
+    state.images.isBreedsFound;

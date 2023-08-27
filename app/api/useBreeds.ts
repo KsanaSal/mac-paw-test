@@ -7,6 +7,7 @@ import {
     currentBreedIdSelector,
     limitImagesSelector,
     mimeTypeSelector,
+    searchValueSelector,
     sortOrderSelector,
 } from "../redux/searchImages/selectorSearchImages";
 const apiUrl = process.env.NEXT_PUBLIC_API_URL as string;

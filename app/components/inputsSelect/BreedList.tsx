@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { IBreed, useGetBreeds } from "../../api/useBreeds";
-import { useDispatch } from "react-redux";
-import { setCurrentBreedId } from "../../redux/searchImages/sliceSearchImages";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    setCurrentBreedId,
+    setIsBreedsFound,
+} from "../../redux/searchImages/sliceSearchImages";
 import { usePathname } from "next/navigation";
+import { searchValueSelector } from "@/app/redux/searchImages/selectorSearchImages";
 
 const BreedList = () => {
     const [breeds, setBreeds] = useState<IBreed[]>([]);
@@ -11,12 +15,33 @@ const BreedList = () => {
     const router = usePathname();
     const link = "/gallery";
     const isActive = router === link;
+    const searchValue = useSelector(searchValueSelector);
 
     useEffect(() => {
         if (breedList) {
             setBreeds(breedList);
         }
     }, [breedList]);
+
+    useEffect(() => {
+        if (searchValue && breeds.length > 0) {
+            const foundBreed = breeds
+                .filter((breed) =>
+                    breed.name.toLowerCase().includes(searchValue.toLowerCase())
+                )
+                .map((breed) => breed.id)
+                .join(",");
+            console.log(foundBreed);
+            if (foundBreed) {
+                dispatch(setCurrentBreedId(foundBreed));
+                dispatch(setIsBreedsFound(true));
+            } else {
+                dispatch(setIsBreedsFound(false));
+            }
+
+            // setFoundBreeds(searchValue);
+        }
+    }, [searchValue, breeds, dispatch]);
 
     return (
         <div className="flex flex-col">

@@ -9,7 +9,7 @@ const BtnTheme = () => {
     const [enabled, setEnabled] = useState(false);
     const { resolvedTheme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
-    console.log(resolvedTheme);
+
     useEffect(() => {
         resolvedTheme === "dark" ? setEnabled(false) : setEnabled(true);
     }, [resolvedTheme]);

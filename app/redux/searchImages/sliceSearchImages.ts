@@ -5,6 +5,8 @@ export interface IBreedInitialState {
     limitImages: string;
     sortOrder: string;
     mimeType: string;
+    searchValue: string;
+    isBreedsFound: boolean;
 }
 
 const initialState: IBreedInitialState = {
@@ -12,6 +14,8 @@ const initialState: IBreedInitialState = {
     limitImages: "10",
     sortOrder: "RANDOM",
     mimeType: "jpg,png",
+    searchValue: "",
+    isBreedsFound: true,
 };
 
 const sliceBreeds = createSlice({
@@ -33,9 +37,23 @@ const sliceBreeds = createSlice({
         setMimeTypes: (state, action) => {
             state.mimeType = action.payload;
         },
+
+        setSearchValue: (state, action) => {
+            state.searchValue = action.payload;
+        },
+
+        setIsBreedsFound: (state, action) => {
+            state.isBreedsFound = action.payload;
+        },
     },
 });
 
-export const { setLimitImages, setCurrentBreedId, setSortOrder, setMimeTypes } =
-    sliceBreeds.actions;
+export const {
+    setLimitImages,
+    setCurrentBreedId,
+    setSortOrder,
+    setMimeTypes,
+    setSearchValue,
+    setIsBreedsFound,
+} = sliceBreeds.actions;
 export default sliceBreeds.reducer;

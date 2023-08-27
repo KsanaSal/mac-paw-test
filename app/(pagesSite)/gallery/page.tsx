@@ -46,9 +46,7 @@ const Gallery = () => {
                     </div>
                 </div>
             </div>
-            <div className="overflow-y-scroll">
-                <ImageList />
-            </div>
+            <ImageList />
         </div>
     );
 };
