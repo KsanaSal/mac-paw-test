@@ -58,7 +58,8 @@ const Gallery = () => {
                 </div>
                 <ImageList />
             </div>
-            <div className="flex justify-center w-full h-[840px] rounded-[20px] bg-grayLight z-10 absolute top-0 right-0  border-2 border-green-700">
+            {/* Modal window */}
+            {/* <div className="flex justify-center w-full h-[840px] rounded-[20px] bg-grayLight z-20 absolute top-0 right-0  border-2 border-green-700">
                 <BtnClose />
                 <div className="flex flex-col items-center mt-[100px]">
                     <h2 className="text-[36px] text-grayDark font-medium">
@@ -83,7 +84,7 @@ const Gallery = () => {
                             height={200}
                             className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
                         />
-                        <p className="text-[20px] z-20 text-grayMedium">
+                        <p className="text-[20px] z-30 text-grayMedium">
                             <span className="text-grayDark font-medium">
                                 Drag here
                             </span>{" "}
@@ -115,7 +116,8 @@ const Gallery = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+                <div className="w-screen h-screen bg-transparent-grayDark60 z-10 fixed"></div>
+            </div> */}
         </>
     );
 };

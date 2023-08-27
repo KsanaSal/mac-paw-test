@@ -8,7 +8,7 @@ const TickIcon = (props: any) => {
             xmlns="http://www.w3.org/2000/svg"
             {...props}
         >
-            <g clip-path="url(#clip0_1_1589)">
+            <g clipPath="url(#clip0_1_1589)">
                 <path
                     fillRule="evenodd"
                     clipRule="evenodd"

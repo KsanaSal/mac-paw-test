@@ -14,3 +14,11 @@ export const isBreedsFoundSelector = (state: { images: IBreedInitialState }) =>
     state.images.isBreedsFound;
 export const searchNameSelector = (state: { images: IBreedInitialState }) =>
     state.images.searchName;
+export const fetchTriggerSelector = (state: { images: IBreedInitialState }) =>
+    state.images.fetchTrigger;
+export const favoriteImageIdSelector = (state: {
+    images: IBreedInitialState;
+}) => state.images.favoriteImageId;
+export const favoriteImageIdRemoveSelector = (state: {
+    images: IBreedInitialState;
+}) => state.images.favoriteImageIdRemove;

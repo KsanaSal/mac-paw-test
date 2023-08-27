@@ -27,6 +27,7 @@ const config: Config = {
                     with10: "#FFFFFF1A",
                     primaryDark20: "#FF868E33",
                     primaryLight60: "#FF868E99",
+                    grayDark60: "#1D1D1D99",
                 },
             },
             dropShadow: {

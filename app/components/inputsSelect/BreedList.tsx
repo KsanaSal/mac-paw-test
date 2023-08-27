@@ -32,15 +32,12 @@ const BreedList = () => {
                 )
                 .map((breed) => breed.id)
                 .join(",");
-            console.log(foundBreed);
             if (foundBreed) {
                 dispatch(setCurrentBreedId(foundBreed));
                 dispatch(setIsBreedsFound(true));
             } else {
                 dispatch(setIsBreedsFound(false));
             }
-
-            // setFoundBreeds(searchValue);
         }
     }, [searchValue, breeds, dispatch]);
 

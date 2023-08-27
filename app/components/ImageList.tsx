@@ -14,6 +14,7 @@ import {
     setIsBreedsFound,
     setSearchValue,
 } from "../redux/searchImages/sliceSearchImages";
+import { useAddFavorites } from "../api/useFavourites";
 
 const ImageList = () => {
     const [images, setImages] = useState<IImage[]>([]);
@@ -24,8 +25,8 @@ const ImageList = () => {
     const link = "/gallery";
     const isActive = routerPage === link;
     const isBreedsFound = useSelector(isBreedsFoundSelector);
-    const searchValue = useSelector(searchValueSelector);
     const dispatch = useDispatch();
+    useAddFavorites();
 
     useEffect(() => {
         dispatch(setIsBreedsFound(true));
@@ -61,6 +62,7 @@ const ImageList = () => {
                                 <div
                                     onClick={() =>
                                         image.breeds.length > 0 &&
+                                        !isActive &&
                                         router.push(`/breeds/${image.id}`)
                                     }
                                     data-index={index}
@@ -99,7 +101,9 @@ const ImageList = () => {
                                     <div className="absolute transition ease-in-out duration-300 top-0 left-0 w-full h-full bg-transparent-primaryLight60 opacity-0 hover:opacity-100">
                                         {isActive ? (
                                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                                <BtnFavourite />
+                                                <BtnFavourite
+                                                    imageId={image.id}
+                                                />
                                             </div>
                                         ) : (
                                             <div className="absolute bottom-[10px] left-1/2 -translate-x-1/2 text-garyDark dark:text-primaryDark bg-white dark:bg-grayLight py-[5px] px-[42px] rounded-[10px] text-center">

@@ -1,18 +1,54 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import ImageList from "../../components/ImageList";
 import BtnBack from "../../components/buttons/BtnBack";
 import BtnRout from "../../components/buttons/BtnRout";
-import { searchNameSelector } from "../../redux/searchImages/selectorSearchImages";
+import {
+    searchNameSelector,
+    searchValueSelector,
+} from "../../redux/searchImages/selectorSearchImages";
+import { useEffect, useState } from "react";
+import { IBreed, useGetBreeds } from "../../api/useBreeds";
+import {
+    setCurrentBreedId,
+    setIsBreedsFound,
+} from "../../redux/searchImages/sliceSearchImages";
 
 const Search = () => {
     const router = usePathname();
     const link = "/search";
     const isActive = router === link;
     const searchName = useSelector(searchNameSelector);
+    const [breeds, setBreeds] = useState<IBreed[]>([]);
+    const { breedList } = useGetBreeds();
+    const dispatch = useDispatch();
+    const searchValue = useSelector(searchValueSelector);
+
+    useEffect(() => {
+        if (breedList) {
+            setBreeds(breedList);
+        }
+    }, [breedList]);
+
+    useEffect(() => {
+        if (searchValue && breeds.length > 0) {
+            const foundBreed = breeds
+                .filter((breed) =>
+                    breed.name.toLowerCase().includes(searchValue.toLowerCase())
+                )
+                .map((breed) => breed.id)
+                .join(",");
+            if (foundBreed) {
+                dispatch(setCurrentBreedId(foundBreed));
+                dispatch(setIsBreedsFound(true));
+            } else {
+                dispatch(setIsBreedsFound(false));
+            }
+        }
+    }, [searchValue, breeds, dispatch]);
 
     return (
         <div className="flex flex-col w-full h-[770px] bg-white dark:bg-transparent-with5 p-[20px] rounded-[20px] gap-[20px]">

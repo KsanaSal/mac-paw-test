@@ -6,9 +6,9 @@ import { useSelector } from "react-redux";
 
 import {
     currentBreedIdSelector,
+    fetchTriggerSelector,
     limitImagesSelector,
     mimeTypeSelector,
-    searchValueSelector,
     sortOrderSelector,
 } from "../redux/searchImages/selectorSearchImages";
 
@@ -48,15 +48,30 @@ export const useGetImages = (): IGetImagesResponse => {
     const limitImages = useSelector(limitImagesSelector);
     const sortOrder = useSelector(sortOrderSelector);
     const mimeType = useSelector(mimeTypeSelector);
+    const fetchTrigger = useSelector(fetchTriggerSelector);
 
-    const { data, error, isLoading }: IFetchResponse<IImage[]> = useSWR(
+    const { trigger, data, isMutating, error } = useSWRMutation(
         `${apiUrl}${API_PATH.SEARCH}?format=json&limit=${limitImages}&breed_ids=${currentBreedId}&order=${sortOrder}&mime_types=${mimeType}`,
         fetcher
     );
-    console.log(data);
+
+    const handleUpdate = async () => {
+        try {
+            await trigger();
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        if (fetchTrigger) {
+            handleUpdate();
+        }
+    }, [currentBreedId, limitImages, sortOrder, mimeType, fetchTrigger]);
+
     return {
         data,
-        isLoading,
+        isLoading: isMutating,
         isImagesError: error,
     };
 };
@@ -88,7 +103,6 @@ export const useGetBreeds = (): IGetBreedsResponse => {
         `${apiUrl}${API_PATH.BREEDS}`,
         fetcher
     );
-    console.log(data);
     return {
         breedList: data,
         isLoading,
@@ -107,44 +121,9 @@ export const useGetBreedsById = (id: string): IGetBreedsByIdResponse => {
         `${apiUrl}${API_PATH.IMAGES}/${id}`,
         fetcher
     );
-    console.log(data);
     return {
         breed: data,
         isLoading,
         isBreedsError: error,
     };
 };
-// export const useRoles = (emailId: string, location: number) => {
-//     const [responseStatus, setResponseStatus] = useState<number | null>(null);
-//     async function sendUpdateRequest(url: string) {
-//         return fetch(url, {
-//             method: "GET",
-//         }).then((res) => {
-//             setResponseStatus(res.status);
-//             return res.json();
-//         });
-//     }
-//     const { trigger, data, isMutating } = useSWRMutation(
-//         emailId ? `${apiUrl}${API_PATH.MEMBERS_ROLES}/${emailId}` : null,
-//         sendUpdateRequest
-//     );
-//     const handleUpdate = async () => {
-//         if (!emailId) return;
-//         try {
-//             setResponseStatus(null);
-//             await trigger();
-//         } catch (error) {
-//             console.log(error);
-//         }
-//     };
-//     useEffect(() => {
-//         if (location > 1) {
-//             handleUpdate();
-//         }
-//     }, [location]);
-//     return {
-//         data,
-//         status: responseStatus,
-//         isMutating,
-//     };
-// };
